@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr;
 import java.util.Stack;
 
 /**
- * The class <code>ExpressionEvaluator</code> contains a method for evaluating simple mathematical expressions
+ * The class <code>ExpressionEvaluator</code> contains a static method for evaluating simple mathematical expressions
  */
 public class ExpressionEvaluator {
     /**
