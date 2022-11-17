@@ -24,7 +24,6 @@
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -79,6 +78,10 @@
         <plugin>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.4.1</version>
+          <configuration>
+            <show>private</show>
+            <nohelp>true</nohelp>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
