@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * This class tests possible inputs to the <code>ExpressionEvaluator.evaluate(String)</code> method
  */
-class ExpressionEvaluatorTest {
+public class ExpressionEvaluatorTest {
     /**
      * Test a lot of possible valid combinations
      */
     @Test
-    void validExpressionsTest() {
+    public void validExpressionsTest() {
         assertEquals(1.0, evaluate("1")); //if its one number its allowed
         assertEquals(2.0, evaluate("sqrt ( 4 )")); //sqrt is treated like one number
         assertEquals(2.0, evaluate("sqrt ( ( 2 + 2 ) )"));
@@ -51,7 +51,7 @@ class ExpressionEvaluatorTest {
      * Tests long expressions
      */
     @Test
-    void LongExpressionTest() { // if these fail RIP
+    public void LongExpressionTest() { // if these fail RIP
         assertEquals(6.0, evaluate("( ( 5 + ( 2 - ( 1 + 4 ) ) ) * ( 15 / ( 9 - ( 2 + 2 ) ) ) )"));
         assertEquals(5.0, evaluate("( ( 4 + ( sqrt ( ( 3 + ( 4 + 2 ) ) ) ) ) - sqrt ( sqrt ( 16 ) ) )"));
         assertEquals(7.0, evaluate("( 1 + ( 3 * ( 6 - ( 2 + sqrt ( 4 ) ) ) ) )"));
@@ -63,7 +63,7 @@ class ExpressionEvaluatorTest {
      * when an open bracket is not closed
      */
     @Test
-    void OpenParenthesisNotClosedTest() {
+    public void OpenParenthesisNotClosedTest() {
         assertThrows(RuntimeException.class, () -> evaluate("( 1 + 2 ("));
         assertThrows(RuntimeException.class, () -> evaluate("( 1 ("));
         assertThrows(RuntimeException.class, () -> evaluate("( ( 1 ) + ( 2 + 3 ( )"));
@@ -78,7 +78,7 @@ class ExpressionEvaluatorTest {
      * when there is an expression inside sqrt() that should be inside parenthesis
      */
     @Test
-    void NoParenthesisInsideSqrtTest() {
+    public void NoParenthesisInsideSqrtTest() {
         assertThrows(RuntimeException.class, () -> evaluate("( sqrt ( 2 + 2 ) )"));
         assertThrows(RuntimeException.class, () -> evaluate("( sqrt ( 2 + ( 1 + 1 ) ) )"));
         assertThrows(RuntimeException.class, () -> evaluate("( sqrt ( ( 2 + 2 ) + 5 ) )"));
@@ -93,7 +93,7 @@ class ExpressionEvaluatorTest {
      * when there is an operator after an operator
      */
     @Test
-    void AfterOperatorOperatorTest() {
+    public void AfterOperatorOperatorTest() {
         assertThrows(RuntimeException.class, () -> evaluate( "( 1 + + 3 )"));
         assertThrows(RuntimeException.class, () -> evaluate("( 1 + ( 1 - - 3 ) )"));
         assertThrows(RuntimeException.class, () -> evaluate("( ( + + ) + 3"));
@@ -106,7 +106,7 @@ class ExpressionEvaluatorTest {
      * when there are multiple operations inside one parenthesis
      */
     @Test
-    void MultipleOperationsInsideOneParenthesisTest() {
+    public void MultipleOperationsInsideOneParenthesisTest() {
         assertThrows(RuntimeException.class, () -> evaluate("( 1 + 2 * 3 )"));
         assertThrows(RuntimeException.class, () -> evaluate("( ( 1 ) + 2 + 3 )"));
         assertThrows(RuntimeException.class, () -> evaluate("( 1 + ( 2 ) + 3 )"));
@@ -124,7 +124,7 @@ class ExpressionEvaluatorTest {
      * when the expression contains unnecessary whitespaces
      */
     @Test
-    void UnnecessaryWhitespacesTest() {
+    public void UnnecessaryWhitespacesTest() {
         assertThrows(RuntimeException.class, () -> evaluate(" ( 1 + 2 )"));
         assertThrows(RuntimeException.class, () -> evaluate(" ( 1 + 2 ) "));
         assertThrows(RuntimeException.class, () -> evaluate("( 1  + 2 )"));
@@ -136,7 +136,7 @@ class ExpressionEvaluatorTest {
      * when the expression has a format not tested by tests before this one
      */
     @Test
-    void MiscellaneousBadFormatTest(){
+    public void MiscellaneousBadFormatTest(){
         assertThrows(RuntimeException.class, () -> evaluate("1 + 2"));
         assertThrows(RuntimeException.class, () -> evaluate("1 - 2 )"));
         assertThrows(RuntimeException.class, () -> evaluate("( ( 1 )"));
