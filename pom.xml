@@ -7,6 +7,7 @@
   <groupId>ba.rpr</groupId>
   <artifactId>Zadaca1_RPR</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <name>Zadaca1_RPR</name>
   <url>http://github.com/irfo11/Zadaca1_RPR</url>
@@ -23,6 +24,11 @@
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.8.2</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.2</version>
     </dependency>
   </dependencies>
 
@@ -75,15 +81,20 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-        <plugin>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.4.1</version>
-          <configuration>
-            <show>private</show>
-            <nohelp>true</nohelp>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <show>private</show>
+          <nohelp>true</nohelp>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
